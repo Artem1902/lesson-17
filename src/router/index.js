@@ -12,17 +12,26 @@ const routes = [
     {
         path: '/friends',
         name: 'friends',
-        component: FriendsView
+        component: FriendsView,
+        meta: {
+            requiredAuth: true
+        }
     },
     {
         path: '/gifts',
         name: 'gifts',
-        component: GiftsView
+        component: GiftsView,
+        meta: {
+            requiredAuth: true
+        }
     },
     {
         path: '/assignment',
         name: 'assignment',
-        component: AssignmentView
+        component: AssignmentView,
+        meta: {
+            requiredAuth: true
+        }
     },
 ]
 
@@ -30,5 +39,17 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+
+// router.beforeEach(async (to) => {
+//     if (to.meta?.requiredAuth) {
+//         let isAuthenticated = store.state.auth.user
+//         if (!isAuthenticated) isAuthenticated = await
+//             store.dispatch('auth/loginWithCredential')
+//         if (!isAuthenticated)
+//             return {
+//                 name: 'login',
+//             }
+//     }
+// })
 
 export default router
